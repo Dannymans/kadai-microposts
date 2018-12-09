@@ -2,12 +2,15 @@ class LikesController < ApplicationController
   before_action :require_user_logged_in
   
   def index
+    @likes = Like.all.page(params[:page])
   end
 
   def show
+    @like = Like.find(params[:id])
   end
 
   def new
+    @like = Like.new
   end
 
   def create
